@@ -1,11 +1,10 @@
-console.log('testing...');
 const imageContainer = document.getElementById('image-container');
 const loader = document.getElementById('loader');
 
 // Unsplash API
-const count = 10;
+let count = 5;
 const apiKey = 'CmcU9Lma0JFMvVQMBJ23Xb3AWG9SkKfIgdl4O6mgyzo';
-const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`
+let apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`
 
 
 // Check if all images are loaded
@@ -15,7 +14,9 @@ function imageLoaded(){
   if (imagesLoaded === totalImages){
     ready = true;
     loader.hidden = true;
-    console.log("ready= ", ready);
+    console.log("ready = ",ready);
+    count = 30;
+    apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
   }
 }
 let ready = false;
@@ -34,8 +35,10 @@ function setAttributes(element, attributes){
 // Create elements for links & photos, then add to DOM
 function displayPhotos(){
   imagesLoaded = 0;
-  totalImages = photosArray.length;
-  console.log("Total Images= ", totalImages);
+
+  totalImages = photosArray.length ;
+  // totalImages = 5;
+  //console.log("Total Images= ", totalImages);
   // Run function for each object in photosArray
   photosArray.forEach((photo) => {
 
